@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+const langchainRoutes = require("./src/Langchain-service/langchain.route");
+
 const authRoutes = require("./src/auth-service/auth.route");
 const { sql } = require("./src/database/db");
 
@@ -15,12 +17,14 @@ app.use(
 );
 app.use(express.json());
 
+
+
 app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok" });
 });
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/langchain", langchainRoutes);
 const initDatabase = async () => {
   await sql`
     CREATE TABLE IF NOT EXISTS users (

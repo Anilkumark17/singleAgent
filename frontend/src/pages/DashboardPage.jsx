@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import TavilySearch from "@/components/tavily/TavilySearch";
+
 import { Badge } from "@/components/ui/badge";
 
 export default function DashboardPage() {
@@ -25,7 +27,7 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-semibold tracking-tight">Dashboard</h1>
-            <p className="text-muted-foreground">YouTube channel management</p>
+            <p className="text-muted-foreground">Fake job detection dashboard</p>
           </div>
           <Button variant="outline" onClick={handleLogout}>
             Logout
@@ -48,6 +50,7 @@ export default function DashboardPage() {
             </div>
           </CardContent>
         </Card>
+        <TavilySearch />
       </div>
     </div>
   );
