@@ -44,7 +44,7 @@ const tavilySearch = async (req, res) => {
 
     if (!process.env.TAVILY_API_KEY) {
       return res.status(503).json({
-        error: "Tavily API key is not configured",
+        error: "Tavily API key is not confgured",
       });
     }
 
