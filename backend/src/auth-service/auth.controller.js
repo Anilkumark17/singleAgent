@@ -1,4 +1,22 @@
 const authService = require("./auth.service");
+const { getDatabaseErrorMessage } = require("../utils/dbErrors");
+
+function getAuthErrorMessage(error) {
+  return getDatabaseErrorMessage(error) || "Authentication request failed";
+}
+
+function getAuthErrorStatus(error) {
+  const message = getAuthErrorMessage(error);
+  if (
+    message.includes("authentication failed") ||
+    message.includes("not configured") ||
+    message.includes("tables are missing")
+  ) {
+    return 503;
+  }
+
+  return error.statusCode || 500;
+}
 
 const register = async (req, res) => {
   try {
@@ -15,8 +33,8 @@ const register = async (req, res) => {
     const { user, token } = await authService.register({ name, email, password });
     return res.status(201).json({ message: "Registration successful", user, token });
   } catch (error) {
-    return res.status(error.statusCode || 500).json({
-      message: error.message || "Registration failed",
+    return res.status(getAuthErrorStatus(error)).json({
+      message: getAuthErrorMessage(error) || "Registration failed",
     });
   }
 };
@@ -32,8 +50,8 @@ const login = async (req, res) => {
     const { user, token } = await authService.login({ email, password });
     return res.status(200).json({ message: "Login successful", user, token });
   } catch (error) {
-    return res.status(error.statusCode || 500).json({
-      message: error.message || "Login failed",
+    return res.status(getAuthErrorStatus(error)).json({
+      message: getAuthErrorMessage(error) || "Login failed",
     });
   }
 };

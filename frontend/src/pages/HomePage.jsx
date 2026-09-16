@@ -11,11 +11,12 @@ import {
 export default function HomePage() {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center bg-muted/40 p-6">
-      <Card className="w-full max-w-lg text-center">
+      <Card className="w-full max-w-2xl text-center">
         <CardHeader>
-          <CardTitle className="text-3xl">YouTube Management</CardTitle>
+          <CardTitle className="text-3xl">Fake Job Detector</CardTitle>
           <CardDescription>
-            Monitor channels, track uploads, and manage your YouTube presence in one place.
+            Agentic AI that verifies job postings with web research, heuristic
+            risk scanning, and structured fraud verdicts.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-3 sm:flex-row sm:justify-center">

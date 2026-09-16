@@ -8,7 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import TavilySearch from "@/components/tavily/TavilySearch";
+import JobDetector from "@/components/job-detector/JobDetector";
+import ResumeStudio from "@/components/resume/ResumeStudio";
 
 import { Badge } from "@/components/ui/badge";
 
@@ -23,11 +24,13 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-svh bg-muted/40 p-6">
-      <div className="mx-auto flex max-w-4xl flex-col gap-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-semibold tracking-tight">Dashboard</h1>
-            <p className="text-muted-foreground">Fake job detection dashboard</p>
+            <p className="text-muted-foreground">
+              Job fraud detection and resume intelligence
+            </p>
           </div>
           <Button variant="outline" onClick={handleLogout}>
             Logout
@@ -50,7 +53,8 @@ export default function DashboardPage() {
             </div>
           </CardContent>
         </Card>
-        <TavilySearch />
+        <ResumeStudio />
+        <JobDetector />
       </div>
     </div>
   );
